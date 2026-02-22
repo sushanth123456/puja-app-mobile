@@ -1,40 +1,44 @@
-import { PUJAS, Puja } from '@/data/pujas';
+import AppButton from '@/components/AppButton';
+import AppCard from '@/components/AppCard';
+import { Colors } from '@/constants/colors';
+import { Spacing } from '@/constants/spacing';
+import { RITUALS } from '@/data/pujas';
 import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import AppButton from '../../components/AppButton';
-import AppCard from '../../components/AppCard';
-import { Colors } from '../../constants/colors';
-import { Spacing } from '../../constants/spacing';
 
-export default function Home() {
+export default function HomeScreen() {
+  const router = useRouter();
 
-    const router=useRouter();
-    const renderItem=({item}:{item:Puja}) =>(
-        <AppCard>
-      <Text style={styles.pujaTitle}>{item.name}</Text>
-      <Text style={styles.desc}>{item.description}</Text>
-      <AppButton
-        title="View Pujaris"
-        onPress={() => 
-                            router.push({
-                pathname: '/pujaris/[pujaId]',
-                params: { pujaId: item.id },
-                })
-
-        }
-      />
-    </AppCard>
-    );
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Select a Puja</Text>
-    
+      <Text style={styles.title}>Book a Puja</Text>
+      <Text style={styles.subtitle}>Choose rituals, compare pujari profiles, and book confidently.</Text>
+      <AppButton title="My Bookings" variant="ghost" onPress={() => router.push('/(User)/bookings')} />
+
       <FlatList
-        data={PUJAS}
-        keyExtractor={(item)=>item.id}
-        renderItem={renderItem}
+        style={styles.list}
+        data={RITUALS}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
-        />
+        renderItem={({ item }) => (
+          <AppCard>
+            <Text style={styles.cardTitle}>{item.name}</Text>
+            <Text style={styles.cardDescription}>{item.description}</Text>
+            <Text style={styles.meta}>Duration: {item.durationMinutes} min</Text>
+            <Text style={styles.meta}>Price Range: INR {item.minPrice} - INR {item.maxPrice}</Text>
+            <Text style={styles.materials}>Materials: {item.materials.join(', ')}</Text>
+            <AppButton
+              title="View Pujaris"
+              onPress={() =>
+                router.push({
+                  pathname: '/pujaris/[pujaId]',
+                  params: { pujaId: item.id },
+                })
+              }
+            />
+          </AppCard>
+        )}
+      />
     </View>
   );
 }
@@ -43,22 +47,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.secondary,
-    padding: Spacing.md,
+    paddingTop: Spacing.xl,
+    paddingHorizontal: Spacing.md,
   },
   title: {
-    fontSize: 22,
-    fontWeight: '700',
-    marginBottom: Spacing.md,
-    color: Colors.textDark,
+    fontSize: 28,
+    fontWeight: '800',
+    color: Colors.primaryDark,
   },
-  pujaTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 4,
-    color: Colors.textDark,
-  },
-  desc: {
+  subtitle: {
+    fontSize: 14,
     color: Colors.textLight,
+    marginBottom: Spacing.md,
+  },
+  list: {
+    marginTop: Spacing.md,
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.textDark,
+    marginBottom: 4,
+  },
+  cardDescription: {
+    color: Colors.textLight,
+    marginBottom: 8,
+  },
+  meta: {
+    color: Colors.textDark,
+    fontSize: 13,
+    marginBottom: 2,
+  },
+  materials: {
+    color: Colors.textLight,
+    fontSize: 12,
     marginBottom: Spacing.sm,
   },
 });

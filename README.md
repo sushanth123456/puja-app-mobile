@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# PujaConnect Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Expo Router app for devotees and pujaris to authenticate, create profiles, and manage bookings.
 
-## Get started
+## Setup
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. Install dependencies:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Create env file from sample:
 
-## Learn more
+```bash
+cp .env.example .env
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Configure production backend URL (HTTPS only):
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```env
+EXPO_PUBLIC_API_BASE_URL=https://api.pujaconnect.com
+EXPO_PUBLIC_API_TIMEOUT_MS=10000
+```
 
-## Join the community
+4. Start the app:
 
-Join our community of developers creating universal apps.
+```bash
+npm run start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+5. Start backend (required for real OTP/social login):
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+## Launch Readiness (Current)
+
+- Role-based auth: implemented at app layer.
+- OTP + email validation flow: implemented in UI/context.
+- Booking status tracking: implemented with lifecycle states.
+- Pujari verification label: surfaced in listing cards.
+- Navigation: stack headers + back navigation for non-tab routes.
+- Secrets: no secrets hardcoded in app code.
+- Production env: `EXPO_PUBLIC_*` config added.
+- HTTPS backend enforcement: runtime check in `lib/config.ts`.
+- Dynamic DB model: SQL schema added in `backend/schema.sql`.
+
+## Required Backend Before Public Launch
+
+- Store passwords using strong hash (Argon2id or bcrypt with strong cost).
+- Enforce OTP TTL, attempt limits, and replay protection.
+- Persist enrolled devotees and pujaris using `backend/schema.sql`.
+- Configure CORS allowlist for app domains only.
+- Serve APIs over HTTPS only.
+- Return consistent API errors for client rendering.
+
+## Important Files
+
+- `app/auth.tsx`: auth screen and OTP UX.
+- `app/profile-setup.tsx`: devotee/pujari onboarding.
+- `app/pujaris/[pujaId].tsx`: filtered pujari listing + photos.
+- `context/AppContext.tsx`: app state and validations.
+- `services/api.ts`: backend API integration helpers.
+- `lib/config.ts`: env validation and HTTPS enforcement.
+- `backend/schema.sql`: DB schema for production backend.
+- `backend/src/*`: Express API (auth, profiles, bookings).

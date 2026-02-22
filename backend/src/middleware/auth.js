@@ -1,0 +1,17 @@
+const { verifyAccessToken } = require('../utils/jwt');
+
+function requireAuth(req, res, next) {
+  const header = req.headers.authorization || '';
+  const [type, token] = header.split(' ');
+  if (type !== 'Bearer' || !token) {
+    return res.status(401).json({ message: 'Missing or invalid auth token.' });
+  }
+  try {
+    req.user = verifyAccessToken(token);
+    return next();
+  } catch (_error) {
+    return res.status(401).json({ message: 'Invalid or expired auth token.' });
+  }
+}
+
+module.exports = { requireAuth };

@@ -1,11 +1,16 @@
 export const Colors = {
-  primary: '#B8572E',      // temple style warm tone
-  secondary: '#F3E9DC',    // light background
-  accent: '#FFD700',       // gold highlight
-  textDark: '#2E2E2E',
-  textLight: '#6B6B6B',
+  primary: '#D77642',
+  primaryDark: '#B85D2E',
+  primarySoft: '#F7E1D2',
+  secondary: '#FFF9F0',
+  accent: '#E8A057',
+  textDark: '#2F241D',
+  textLight: '#756055',
   white: '#FFFFFF',
-  border: '#E5E5E5',
+  border: '#F0DCCB',
+  card: '#FFFDF8',
+  warning: '#B85D2E',
   success: '#2E7D32',
   danger: '#C62828',
+  info: '#4C6A92',
 };

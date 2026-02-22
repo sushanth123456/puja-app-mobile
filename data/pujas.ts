@@ -1,28 +1,85 @@
-export type Puja = {
-  id: string;
-  name: string;
-  description: string;
-};
+import { Ritual } from '@/types/app';
 
-export const PUJAS: Puja[] = [
+export const RITUALS: Ritual[] = [
   {
-    id: '1',
+    id: 'ganesh-puja',
     name: 'Ganesh Puja',
-    description: 'Removes obstacles and brings success',
+    description: 'Invokes Lord Ganesha for success and obstacle removal.',
+    durationMinutes: 90,
+    materials: ['Turmeric', 'Kumkum', 'Modak', 'Durva grass', 'Coconut'],
+    minPrice: 2500,
+    maxPrice: 6000,
   },
   {
-    id: '2',
-    name: 'Lakshmi Puja',
-    description: 'For wealth and prosperity',
+    id: 'satyanarayana-puja',
+    name: 'Satyanarayana Puja',
+    description: 'Traditional puja for prosperity and family well-being.',
+    durationMinutes: 150,
+    materials: ['Bananas', 'Tulsi leaves', 'Panchamrut', 'Prasad ingredients'],
+    minPrice: 4500,
+    maxPrice: 9000,
   },
   {
-    id: '3',
-    name: 'Griha Pravesh',
-    description: 'Housewarming and vastu blessings',
+    id: 'griha-pravesha',
+    name: 'Griha Pravesha',
+    description: 'Vastu and homa rituals for entering a new home.',
+    durationMinutes: 240,
+    materials: ['Kalasha', 'Navadhanya', 'Ghee', 'Homa samagri'],
+    minPrice: 9000,
+    maxPrice: 18000,
   },
   {
-    id: '4',
-    name: 'Satyanarayan Puja',
-    description: 'For family well-being and peace',
+    id: 'shraddha',
+    name: 'Death Anniversary (Shraddha)',
+    description: 'Ancestral remembrance rituals with proper vidhi.',
+    durationMinutes: 120,
+    materials: ['Sesame seeds', 'Darbha', 'Rice balls', 'Vastra'],
+    minPrice: 5000,
+    maxPrice: 11000,
+  },
+  {
+    id: 'upanayanam',
+    name: 'Upanayanam',
+    description: 'Sacred thread ceremony and Vedic initiation rites.',
+    durationMinutes: 300,
+    materials: ['Yagnopavita', 'Samidha', 'Ghee', 'Dhoti set'],
+    minPrice: 12000,
+    maxPrice: 26000,
+  },
+  {
+    id: 'marriage-rituals',
+    name: 'Marriage Rituals',
+    description: 'Full wedding puja sequence tailored to sampradaya.',
+    durationMinutes: 360,
+    materials: ['Mangalya', 'Homa samagri', 'Garlands', 'Rice', 'Coconuts'],
+    minPrice: 18000,
+    maxPrice: 42000,
+  },
+  {
+    id: 'housewarming',
+    name: 'Housewarming',
+    description: 'Auspicious blessings and Vastu alignment ceremonies.',
+    durationMinutes: 210,
+    materials: ['Kalasha', 'Mango leaves', 'Cow ghee', 'Flowers'],
+    minPrice: 8000,
+    maxPrice: 17000,
+  },
+  {
+    id: 'festival-pujas',
+    name: 'Festival Pujas',
+    description: 'Special occasion pujas for major Hindu festivals.',
+    durationMinutes: 120,
+    materials: ['Depends on festival', 'Flowers', 'Prasad', 'Deepam'],
+    minPrice: 3000,
+    maxPrice: 12000,
+  },
+  {
+    id: 'custom-request',
+    name: 'Custom Puja Request',
+    description: 'Request personalized rituals based on your family needs.',
+    durationMinutes: 120,
+    materials: ['Finalized after consultation'],
+    minPrice: 2500,
+    maxPrice: 25000,
   },
 ];

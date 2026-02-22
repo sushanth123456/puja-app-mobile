@@ -1,31 +1,106 @@
-export type Pujari = {
-  id: string;
-  name: string;
-  experience: number;
-  languages: string[];
-  pujaIds: string[]; // which pujas they perform
-};
+import { PujariProfile } from '@/types/app';
 
-export const PUJARIS: Pujari[] = [
+export const PUJARIS: PujariProfile[] = [
   {
-    id: 'p1',
-    name: 'Sharma Ji',
-    experience: 12,
-    languages: ['Hindi', 'Sanskrit'],
-    pujaIds: ['1', '2'],
+    id: 'pujari-1',
+    name: 'Pt. Venkata Sharma',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=240&fit=crop',
+    bio: 'Specialized in griha and samskara rituals with strict Vedic paddhati.',
+    yearsExperience: 16,
+    sampradaya: 'Smarta',
+    languages: ['Sanskrit', 'Telugu', 'Hindi'],
+    ritualSpecialties: ['griha-pravesha', 'housewarming', 'satyanarayana-puja'],
+    location: 'Bengaluru',
+    rating: 4.9,
+    reviewCount: 238,
+    pricePerHour: 2200,
+    availability: ['2026-02-24', '2026-02-26', '2026-03-01'],
+    verified: true,
+    reviews: [
+      {
+        id: 'r1',
+        devoteeName: 'Raghav',
+        rating: 5,
+        comment: 'Very disciplined and clear guidance on materials.',
+      },
+      {
+        id: 'r2',
+        devoteeName: 'Karthik',
+        rating: 5,
+        comment: 'On-time and conducted rituals with deep explanation.',
+      },
+    ],
   },
   {
-    id: 'p2',
-    name: 'Ravi Shastri',
-    experience: 8,
-    languages: ['Telugu', 'Hindi'],
-    pujaIds: ['3'],
+    id: 'pujari-2',
+    name: 'Acharya Madhusudhan',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&h=240&fit=crop',
+    bio: 'Madhwa scholar with focus on Satyanarayana and festival pujas.',
+    yearsExperience: 11,
+    sampradaya: 'Madhwa',
+    languages: ['Kannada', 'Sanskrit', 'English'],
+    ritualSpecialties: ['ganesh-puja', 'satyanarayana-puja', 'festival-pujas'],
+    location: 'Mysuru',
+    rating: 4.7,
+    reviewCount: 145,
+    pricePerHour: 1800,
+    availability: ['2026-02-25', '2026-02-28', '2026-03-03'],
+    verified: true,
+    reviews: [
+      {
+        id: 'r3',
+        devoteeName: 'Ananya',
+        rating: 5,
+        comment: 'Excellent explanation and very respectful conduct.',
+      },
+    ],
   },
   {
-    id: 'p3',
-    name: 'Krishna Murthy',
-    experience: 15,
-    languages: ['Tamil', 'Sanskrit'],
-    pujaIds: ['1', '4'],
+    id: 'pujari-3',
+    name: 'Sri Narayan Dixit',
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=240&h=240&fit=crop',
+    bio: 'Experienced in Shraddha and Upanayanam ceremonies.',
+    yearsExperience: 22,
+    sampradaya: 'Vaishnava',
+    languages: ['Tamil', 'Sanskrit', 'English'],
+    ritualSpecialties: ['shraddha', 'upanayanam', 'marriage-rituals'],
+    location: 'Chennai',
+    rating: 4.8,
+    reviewCount: 312,
+    pricePerHour: 2600,
+    availability: ['2026-02-24', '2026-02-27', '2026-03-04'],
+    verified: true,
+    reviews: [
+      {
+        id: 'r4',
+        devoteeName: 'Meera',
+        rating: 4,
+        comment: 'Very methodical and patient throughout the ceremony.',
+      },
+    ],
+  },
+  {
+    id: 'pujari-4',
+    name: 'Pandit Om Prakash',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&h=240&fit=crop',
+    bio: 'North Indian rituals expert for weddings and festive pujas.',
+    yearsExperience: 14,
+    sampradaya: 'Other',
+    languages: ['Hindi', 'Sanskrit', 'Marathi'],
+    ritualSpecialties: ['marriage-rituals', 'festival-pujas', 'ganesh-puja'],
+    location: 'Pune',
+    rating: 4.6,
+    reviewCount: 98,
+    pricePerHour: 1700,
+    availability: ['2026-02-25', '2026-02-26', '2026-03-02'],
+    verified: false,
+    reviews: [
+      {
+        id: 'r5',
+        devoteeName: 'Nitin',
+        rating: 4,
+        comment: 'Great with timings and coordination.',
+      },
+    ],
   },
 ];
